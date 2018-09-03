@@ -18,9 +18,6 @@ jobs:
 
     steps:
       - checkout
-      - run: cd ~/repo/backend
-      - run: ls ~/repo/backend
-      - run: ls ~/repo
 
       # Download and cache dependencies
       - restore_cache:
@@ -63,9 +60,6 @@ jobs:
 
     steps:
       - checkout
-      - run: cd ~/repo/frontend
-      - run: ls ~/repo/frontend
-      - run: ls ~/repo
 
       # Download and cache dependencies
       - restore_cache:
