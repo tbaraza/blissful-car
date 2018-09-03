@@ -14,7 +14,7 @@
   "scripts": {
     "start": "node_modules/.bin/nodemon app.js",
     "test": "node_modules/mocha/bin/mocha tests/**/**.test.js --exit",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "coverage": "node_modules/nyc/bin/nyc.js report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "devDependencies": {
     "chai": "^4.1.2",
