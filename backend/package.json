@@ -13,8 +13,9 @@
   },
   "scripts": {
     "start": "node_modules/.bin/nodemon app.js",
-    "test": "node_modules/mocha/bin/mocha tests/**/**.test.js --exit",
-    "coverage": "node_modules/nyc/bin/nyc.js report --reporter=text-lcov > coverage.lcov && codecov"
+    "test:watch": "node_modules/mocha/bin/mocha tests/**/**.test.js --watch",
+    "test": "node_modules/nyc/bin/nyc.js node_modules/mocha/bin/mocha tests/**/**.test.js --exit",
+    "coverage": "node_modules/nyc/bin/nyc.js report --reporter=text-lcov > coverage.lcov && node_modules/codecov/bin/codecov"
   },
   "devDependencies": {
     "chai": "^4.1.2",
