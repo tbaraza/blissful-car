@@ -89,6 +89,11 @@ jobs:
           command: yarn test
           working_directory: ~/repo/frontend
 
+      - run:
+          name: Generate code coverage
+          command: "yarn coverage"
+          working_directory: ~/repo/frontend
+
 workflows:
   version: 2
   backend-frontend:
