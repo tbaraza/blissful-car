@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  build-backend:
     docker:
       # specify the version you desire here
       - image: circleci/node:10.9.0
@@ -49,10 +49,49 @@ jobs:
           command: "yarn coverage"
           working_directory: ~/repo/backend
 
-      - store_artifacts:
-          path: test-results.xml
-          prefix: tests
+  build-frontend:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:10.9.0
 
-      - store_artifacts:
-          path: coverage
-          prefix: coverage
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run: cd ~/repo/frontend
+      - run: ls ~/repo/frontend
+      - run: ls ~/repo
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "~/repo/frontend/package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          name: Install dependencies
+          command: yarn install
+          working_directory: ~/repo/frontend
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "~/repo/frontend/package.json" }}
+
+      - run:
+          name: Test
+          command: yarn test
+          working_directory: ~/repo/frontend
+
+workflows:
+  version: 2
+  backend-frontend:
+    jobs:
+      - build-backend
+      - build-frontend
