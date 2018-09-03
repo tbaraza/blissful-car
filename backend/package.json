@@ -12,7 +12,7 @@
     "nodemon": "^1.18.4"
   },
   "scripts": {
-    "start": "node_modules/.bin/nodemon app.js",
+    "start": "NODE_PATH=src node_modules/.bin/nodemon app.js",
     "test:watch": "node_modules/mocha/bin/mocha tests/**/**.test.js --watch",
     "test": "node_modules/nyc/bin/nyc.js node_modules/mocha/bin/mocha tests/**/**.test.js --exit",
     "coverage": "node_modules/nyc/bin/nyc.js report --reporter=text-lcov > coverage.lcov && node_modules/codecov/bin/codecov"

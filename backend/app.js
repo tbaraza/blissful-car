@@ -21,6 +21,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressSanitized.middleware());
 
+require(`${env.apiVersion}/routes`)(app);
+
 // Set up default catch-all route that sends back a welcome message
 app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to wonderful beginnings'
