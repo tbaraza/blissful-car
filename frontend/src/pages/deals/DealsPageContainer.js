@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import DealsPage from './DealsPage';
 import { getCars } from '../home/actions/searchActions';
 import { getApiCallState } from '../../api/reducer/apiReducer';
@@ -19,6 +20,18 @@ const mapStateToProps = (state) => {
     searchResults,
     apiCallState,
   };
+};
+
+DealsPageContainer.propTypes = {
+  searchResults: PropTypes.shape({
+    cars: PropTypes.array,
+    errorObject: PropTypes.object,
+  }).isRequired,
+  apiCallState: PropTypes.shape({
+    success: PropTypes.bool,
+    loading: PropTypes.bool,
+    error: PropTypes.bool,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps)(DealsPageContainer);

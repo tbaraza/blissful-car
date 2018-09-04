@@ -1,6 +1,8 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import HomePage from './HomePage';
 import { fetchSearchResults, getCars } from './actions/searchActions';
 import { getApiCallState } from '../../api/reducer/apiReducer';
@@ -29,6 +31,15 @@ const mapDispatchToProps = dispatch => bindActionCreators(
   },
   dispatch,
 );
+
+HomePageContainer.propTypes = {
+  fetchSearchResults: PropTypes.func.isRequired,
+  apiCallState: PropTypes.shape({
+    success: PropTypes.bool,
+    loading: PropTypes.bool,
+    error: PropTypes.bool,
+  }).isRequired,
+};
 
 export default connect(
   mapStateToProps,

@@ -1,14 +1,25 @@
+/* eslint-disable react/destructuring-assignment */
+
 import React, { Component } from 'react';
 import {
-  Tabs, Card, Select, Form, Button, Spin,
+  Tabs, Card, Select, Form, Button, Spin, Icon, notification,
 } from 'antd';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const TabPane = Tabs.TabPane;
-const Option = Select.Option;
+const { TabPane } = Tabs;
+const { Option } = Select;
 const FormItem = Form.Item;
 
 class HomePage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      dealsPage: false,
+    };
+  }
+
   handleSelectChange = (value) => {
     console.log(value);
   };
@@ -17,22 +28,40 @@ class HomePage extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        this.props.fetchSearchResults(values).then(() => {
+          const { apiCallState } = this.props;
 
-        this.props.fetchSearchResults(values);
+          if (apiCallState.error) {
+            this.openNotification('Error', 'Please check if you are connected to the internet.');
+          }
+
+          if (apiCallState.success) {
+            this.setState({
+              dealsPage: true,
+            });
+          }
+        });
       }
+    });
+  };
+
+  openNotification = (message, description) => {
+    notification.open({
+      message,
+      description,
+      icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
     });
   };
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { loading, success } = this.props.apiCallState;
+    const { loading } = this.props.apiCallState;
     if (loading) {
       return <Spin />;
     }
 
-    if (success) {
-      return <Redirect to="/deals" />;
+    if (this.state.dealsPage) {
+      return <Redirect to="/deals" push />;
     }
 
     return (
@@ -103,5 +132,18 @@ class HomePage extends Component {
     );
   }
 }
+
+HomePage.propTypes = {
+  fetchSearchResults: PropTypes.func.isRequired,
+  form: PropTypes.shape({
+    getFieldDecorator: PropTypes.func,
+    validateFields: PropTypes.func,
+  }).isRequired,
+  apiCallState: PropTypes.shape({
+    success: PropTypes.bool,
+    loading: PropTypes.bool,
+    error: PropTypes.bool,
+  }).isRequired,
+};
 
 export default Form.create()(HomePage);

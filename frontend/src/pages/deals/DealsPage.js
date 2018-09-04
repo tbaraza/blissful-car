@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Icon, Tooltip } from 'antd';
+import PropTypes from 'prop-types';
 import './DealsPage.css';
 
 class DealsPage extends Component {
@@ -21,7 +22,7 @@ class DealsPage extends Component {
   ));
 
   render() {
-    const { cars } = this.props.searchResults;
+    const { searchResults } = this.props;
     return (
       <div className="searchResultsContainer">
         <p>
@@ -31,10 +32,17 @@ class DealsPage extends Component {
             <Icon type="info-circle" />
           </Tooltip>
         </p>
-        <div className="carCards">{this.renderResults(cars)}</div>
+        <div className="carCards">{this.renderResults(searchResults.cars)}</div>
       </div>
     );
   }
 }
+
+DealsPage.propTypes = {
+  searchResults: PropTypes.shape({
+    cars: PropTypes.array,
+    errorObject: PropTypes.object,
+  }).isRequired,
+};
 
 export default DealsPage;
