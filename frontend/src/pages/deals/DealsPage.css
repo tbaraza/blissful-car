@@ -1,0 +1,15 @@
+.carInfo {
+  margin: 0.3rem;
+  margin-bottom: 1rem;
+  flex: 1 1 33.33%;
+}
+
+.carCards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.searchResultsContainer {
+  background: #ececec;
+  padding: 2rem;
+}
