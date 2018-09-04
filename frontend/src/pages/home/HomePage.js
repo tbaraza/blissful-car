@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import {
   Tabs, Card, Select, Form, Button, Spin,
 } from 'antd';
-import logo from './logo.svg';
-// import './App.css';
+import { Redirect } from 'react-router-dom';
 
 const TabPane = Tabs.TabPane;
 const Option = Select.Option;
 const FormItem = Form.Item;
 
-class App extends Component {
+class HomePage extends Component {
   handleSelectChange = (value) => {
     console.log(value);
   };
@@ -27,9 +26,13 @@ class App extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { loading } = this.props.apiCallState;
+    const { loading, success } = this.props.apiCallState;
     if (loading) {
       return <Spin />;
+    }
+
+    if (success) {
+      return <Redirect to="/deals" />;
     }
 
     return (
@@ -101,4 +104,4 @@ class App extends Component {
   }
 }
 
-export default Form.create()(App);
+export default Form.create()(HomePage);
