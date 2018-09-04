@@ -9,7 +9,7 @@ class SearchController {
     if (passengers && insurance && bestFuel && model && color) {
       data.cars.map((car) => {
         if (
-          car.passengers === Number(passengers)
+          car.passengers.includes(Number(passengers))
           && car.insurance === insurance
           && car.bestFuel === bestFuel
           && car.model === model
@@ -24,7 +24,7 @@ class SearchController {
     if (passengers && insurance && bestFuel) {
       data.cars.map((car) => {
         if (
-          car.passengers === Number(passengers)
+          car.passengers.includes(Number(passengers))
           && car.insurance === insurance
           && car.bestFuel === bestFuel
         ) {

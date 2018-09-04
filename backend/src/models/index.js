@@ -1,51 +1,51 @@
 module.exports = {
   cars: [
     {
-      passengers: 4,
-      insurance: 'basic',
-      bestFuel: 'true',
+      passengers: [1, 2, 3, 4, 5],
+      insurance: 'good',
+      bestFuel: 'yes',
       model: 'mercedes',
       color: 'blue'
     },
     {
-      passengers: 2,
+      passengers: [1, 2],
       insurance: 'basic',
-      bestFuel: 'true',
+      bestFuel: 'yes',
       model: 'mercedes',
       color: 'blue'
     },
     {
-      passengers: 4,
+      passengers: [1, 2],
       insurance: 'basic',
-      bestFuel: 'true',
+      bestFuel: 'yes',
       model: 'Porsche',
       color: 'green'
     },
     {
-      passengers: 2,
-      insurance: 'basic',
-      bestFuel: 'false',
+      passengers: [1, 2, 3, 4],
+      insurance: 'premium',
+      bestFuel: 'no',
       model: 'Land Rover',
       color: 'green'
     },
     {
-      passengers: 4,
+      passengers: [1, 2, 3, 4],
       insurance: 'basic',
-      bestFuel: 'true',
+      bestFuel: 'yes',
       model: 'Subaru',
       color: 'green'
     },
     {
-      passengers: 4,
+      passengers: [1, 2, 3, 4, 5, 6, 7],
       insurance: 'good',
-      bestFuel: 'true',
+      bestFuel: 'yes',
       model: 'Volkswagen',
       color: 'green'
     },
     {
-      passengers: 4,
+      passengers: [1],
       insurance: 'premium',
-      bestFuel: 'true',
+      bestFuel: 'yes',
       model: '',
       color: 'green'
     }
