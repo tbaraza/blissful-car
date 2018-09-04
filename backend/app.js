@@ -4,10 +4,16 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
 const expressSanitized = require('express-sanitize-escape');
+const http = require('http');
+const socketIo = require('socket.io');
+const analytics = require('./src/services/analytics/socket');
 const { env } = require('./src/config');
 
 const app = express();
+
 const port = process.env.PORT || 9000;
+const server = http.createServer(app);
+const io = socketIo(server);
 
 // Log requests to the console
 if (env.name === 'development') {
@@ -28,7 +34,9 @@ app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to wonderful beginnings'
 }));
 
-app.listen(port, (err) => {
+analytics(io);
+
+server.listen(port, (err) => {
   if (err) {
     console.error(err);
   } else {
