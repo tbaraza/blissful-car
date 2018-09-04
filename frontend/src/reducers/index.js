@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import fetchInitialSearch from '../pages/home/reducer/initialSearchReducer';
+import fetchSearch from '../pages/home/reducer/searchReducer';
+import apiCallState from '../api/reducer/apiReducer';
 
 const rootReducer = combineReducers({
-  cars: fetchInitialSearch,
+  search: fetchSearch,
+  apiCallState,
 });
 
 export default rootReducer;
