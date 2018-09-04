@@ -6,7 +6,22 @@ class SearchController {
     const {
       passengers, insurance, bestFuel, model, color
     } = req.query;
-    if ((passengers && insurance && bestFuel) || (model || color)) {
+    if (passengers && insurance && bestFuel && model && color) {
+      data.cars.map((car) => {
+        if (
+          car.passengers === Number(passengers)
+          && car.insurance === insurance
+          && car.bestFuel === bestFuel
+          && car.model === model
+          && car.color === color
+        ) {
+          results.push(car);
+        }
+        return results;
+      });
+    }
+
+    if (passengers && insurance && bestFuel) {
       data.cars.map((car) => {
         if (
           car.passengers === Number(passengers)
