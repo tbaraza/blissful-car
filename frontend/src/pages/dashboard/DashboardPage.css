@@ -1,0 +1,27 @@
+.dashboard-container {
+  padding: 2rem;
+}
+
+.eye-icon-container {
+  display: flex;
+  background: #2591e1;
+  justify-content: center;
+  height: 12rem;
+  align-items: center;
+}
+
+.user-icon-container {
+  display: flex;
+  background: #c73a3e;
+  justify-content: center;
+  height: 12rem;
+  align-items: center;
+}
+
+.search-icon-container {
+  display: flex;
+  background: #5fa547;
+  justify-content: center;
+  height: 12rem;
+  align-items: center;
+}
