@@ -2,12 +2,13 @@
 
 import React, { Component } from 'react';
 import {
-  Tabs, Card, Select, Form, Button, Spin, Icon, notification,
+  Card, Select, Form, Button, Spin, Icon, notification,
 } from 'antd';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import socketIOClient from 'socket.io-client';
+import './HomePage.css';
 
-const { TabPane } = Tabs;
 const { Option } = Select;
 const FormItem = Form.Item;
 
@@ -17,6 +18,7 @@ class HomePage extends Component {
 
     this.state = {
       dealsPage: false,
+      endpoint: 'http://127.0.0.1:9000',
     };
   }
 
@@ -36,9 +38,14 @@ class HomePage extends Component {
           }
 
           if (apiCallState.success) {
+            const { endpoint } = this.state;
+            const socket = socketIOClient(endpoint);
+
             this.setState({
               dealsPage: true,
             });
+
+            socket.emit('search');
           }
         });
       }
@@ -66,68 +73,54 @@ class HomePage extends Component {
 
     return (
       <div className="App">
-        <h2>Hello there</h2>
-        <Tabs onChange={this.callback} type="card">
-          <TabPane tab="Tab 1" key="1">
-            <Card>
-              <Form onSubmit={this.handleSubmit}>
-                <FormItem label="Passengers" labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
-                  {getFieldDecorator('passengers', {
-                    rules: [{ required: true, message: 'Please select number of passengers!' }],
-                  })(
-                    <Select
-                      placeholder="Select number of passengers"
-                      onChange={this.handleSelectChange}
-                    >
-                      <Option value="1">1</Option>
-                      <Option value="2">2</Option>
-                      <Option value="3">3</Option>
-                      <Option value="4">4</Option>
-                    </Select>,
-                  )}
-                </FormItem>
-                <FormItem label="Insurance" labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
-                  {getFieldDecorator('insurance', {
-                    rules: [{ required: true, message: 'Please select type of insurance!' }],
-                  })(
-                    <Select
-                      placeholder="Select type of insurance"
-                      onChange={this.handleSelectChange}
-                    >
-                      <Option value="good">good</Option>
-                      <Option value="basic">basic</Option>
-                      <Option value="premium">premium</Option>
-                    </Select>,
-                  )}
-                </FormItem>
-                <FormItem label="Fuel" labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
-                  {getFieldDecorator('bestFuel', {
-                    rules: [{ required: true, message: 'Please select fuel option!' }],
-                  })(
-                    <Select
-                      placeholder="Do you want the best fuel option?"
-                      onChange={this.handleSelectChange}
-                    >
-                      <Option value="yes">yes</Option>
-                      <Option value="no">no</Option>
-                    </Select>,
-                  )}
-                </FormItem>
-                <FormItem wrapperCol={{ span: 12, offset: 5 }}>
-                  <Button type="primary" htmlType="submit">
-                    Find Deals
-                  </Button>
-                </FormItem>
-              </Form>
-            </Card>
-          </TabPane>
-          <TabPane tab="Tab 2" key="2">
-            Content of Tab Pane 2
-          </TabPane>
-          <TabPane tab="Tab 3" key="3">
-            Content of Tab Pane 3
-          </TabPane>
-        </Tabs>
+        <Card>
+          <Form onSubmit={this.handleSubmit}>
+            <FormItem label="Passengers" labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
+              {getFieldDecorator('passengers', {
+                rules: [{ required: true, message: 'Please select number of passengers!' }],
+              })(
+                <Select
+                  placeholder="Select number of passengers"
+                  onChange={this.handleSelectChange}
+                >
+                  <Option value="1">1</Option>
+                  <Option value="2">2</Option>
+                  <Option value="3">3</Option>
+                  <Option value="4">4</Option>
+                </Select>,
+              )}
+            </FormItem>
+            <FormItem label="Insurance" labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
+              {getFieldDecorator('insurance', {
+                rules: [{ required: true, message: 'Please select type of insurance!' }],
+              })(
+                <Select placeholder="Select type of insurance" onChange={this.handleSelectChange}>
+                  <Option value="good">good</Option>
+                  <Option value="basic">basic</Option>
+                  <Option value="premium">premium</Option>
+                </Select>,
+              )}
+            </FormItem>
+            <FormItem label="Fuel" labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
+              {getFieldDecorator('bestFuel', {
+                rules: [{ required: true, message: 'Please select fuel option!' }],
+              })(
+                <Select
+                  placeholder="Do you want the best fuel option?"
+                  onChange={this.handleSelectChange}
+                >
+                  <Option value="yes">yes</Option>
+                  <Option value="no">no</Option>
+                </Select>,
+              )}
+            </FormItem>
+            <FormItem wrapperCol={{ span: 12, offset: 5 }}>
+              <Button type="primary" htmlType="submit">
+                Find Deals
+              </Button>
+            </FormItem>
+          </Form>
+        </Card>
       </div>
     );
   }

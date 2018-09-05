@@ -47,7 +47,8 @@ module.exports = (visitorsData) => {
   const computeStats = {
     pages: computePageCounts(visitorsData),
     referrers: computeRefererCounts(visitorsData),
-    activeUsers: getActiveUsers(visitorsData)
+    activeUsers: getActiveUsers(visitorsData),
+    searches: visitorsData.searches
   };
   return computeStats;
 };
