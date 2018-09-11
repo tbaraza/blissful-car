@@ -12,8 +12,8 @@ class SearchController {
           car.passengers.includes(Number(passengers))
           && car.insurance === insurance
           && car.bestFuel === bestFuel
-          && car.model === model
-          && car.color === color
+          && (car.model === model || car.model === 'any')
+          && (car.color === color || car.color === 'any')
         ) {
           results.push(car);
         }

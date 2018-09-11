@@ -4,14 +4,14 @@ module.exports = {
       passengers: [1, 2, 3, 4, 5],
       insurance: 'good',
       bestFuel: 'yes',
-      model: 'mercedes',
+      model: 'Mercedes',
       color: 'blue'
     },
     {
       passengers: [1, 2],
       insurance: 'basic',
       bestFuel: 'yes',
-      model: 'mercedes',
+      model: 'Mercedes',
       color: 'blue'
     },
     {
