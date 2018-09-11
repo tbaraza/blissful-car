@@ -19,14 +19,16 @@ export const fetchSearchRequestFail = error => ({
 });
 
 export const fetchSearchResults = values => async (dispatch) => {
-  const { passengers, insurance, bestFuel } = values;
+  const {
+    passengers, insurance, bestFuel, model, color,
+  } = values;
 
   dispatch(fetchSearchRequest());
 
   try {
     const response = await apiClient(
       'get',
-      `/search?passengers=${passengers}&insurance=${insurance}&bestFuel=${bestFuel}`,
+      `/search?passengers=${passengers}&insurance=${insurance}&bestFuel=${bestFuel}&model=${model}&color=${color}`,
     );
     dispatch(fetchSearchRequestSuccess(response));
   } catch (error) {
