@@ -19,6 +19,7 @@ class HomePage extends Component {
     this.state = {
       dealsPage: false,
       endpoint: 'http://127.0.0.1:9000',
+      values: {},
     };
   }
 
@@ -43,6 +44,7 @@ class HomePage extends Component {
 
             this.setState({
               dealsPage: true,
+              values,
             });
 
             socket.emit('search');
@@ -63,12 +65,17 @@ class HomePage extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const { loading } = this.props.apiCallState;
+    const { values } = this.state;
     if (loading) {
       return <Spin />;
     }
 
     if (this.state.dealsPage) {
-      return <Redirect to="/deals" push />;
+      const to = {
+        pathname: '/deals',
+        state: { values },
+      };
+      return <Redirect to={to} push />;
     }
 
     return (
@@ -87,6 +94,27 @@ class HomePage extends Component {
                   <Option value="2">2</Option>
                   <Option value="3">3</Option>
                   <Option value="4">4</Option>
+                </Select>,
+              )}
+            </FormItem>
+            <FormItem label="Model" labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
+              {getFieldDecorator('model', { initialValue: 'any' })(
+                <Select onChange={this.handleSelectChange}>
+                  <Option value="any">any</Option>
+                  <Option value="Ford">Ford</Option>
+                  <Option value="Mercedes">Mercedes</Option>
+                  <Option value="Porsche">Porsche</Option>
+                  <Option value="Subaru">Subaru</Option>
+                </Select>,
+              )}
+            </FormItem>
+            <FormItem label="Color" labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
+              {getFieldDecorator('color', { initialValue: 'any' })(
+                <Select onChange={this.handleSelectChange}>
+                  <Option value="any">any</Option>
+                  <Option value="green">green</Option>
+                  <Option value="blue">blue</Option>
+                  <Option value="black">black</Option>
                 </Select>,
               )}
             </FormItem>

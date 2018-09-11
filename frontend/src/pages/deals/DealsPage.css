@@ -1,15 +1,37 @@
-.carInfo {
-  margin: 0.3rem;
-  margin-bottom: 1rem;
-  flex: 1 1 33.33%;
+.search-results-container {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  margin-top: 1rem;
+  height: 100%;
 }
 
-.carCards {
+.search-results {
+  margin-right: 1.5rem;
+}
+.car-info {
+  flex: 1 1 33.33%;
+  box-shadow: 0 0 1rem 0 #efeeec;
+}
+
+.car-cards {
   display: flex;
   flex-wrap: wrap;
 }
 
-.searchResultsContainer {
-  background: #ececec;
-  padding: 2rem;
+.recommended-results-container {
+  border: 0.1rem solid #1b7de1;
+}
+
+.other-search-results {
+  margin-top: 1rem;
+}
+
+.best-deal {
+  background: #1b7de1;
+  color: #fff;
+  margin: 0;
+}
+
+.colors-checkbox {
+  margin: 0 3rem;
 }

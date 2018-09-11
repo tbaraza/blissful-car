@@ -7,9 +7,11 @@ import { getApiCallState } from '../../api/reducer/apiReducer';
 
 class DealsPageContainer extends Component {
   render() {
-    const { apiCallState, searchResults } = this.props;
+    const { apiCallState, searchResults, location } = this.props;
 
-    return <DealsPage searchResults={searchResults} apiCallState={apiCallState} />;
+    return (
+      <DealsPage searchResults={searchResults} apiCallState={apiCallState} location={location} />
+    );
   }
 }
 
@@ -31,6 +33,9 @@ DealsPageContainer.propTypes = {
     success: PropTypes.bool,
     loading: PropTypes.bool,
     error: PropTypes.bool,
+  }).isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.object,
   }).isRequired,
 };
 
