@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import fetchSearch from '../pages/home/reducer/searchReducer';
-import apiCallState from '../api/reducer/apiReducer';
+import fetchSearch from '../modules/search/searchReducer';
+import apiCallState from '../../api/reducer/apiReducer';
 
 const rootReducer = combineReducers({
   search: fetchSearch,
