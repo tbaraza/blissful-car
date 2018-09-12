@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DealsPage from './DealsPage';
-import { getCars } from '../home/actions/searchActions';
+import { getCars, fetchFilterResults } from '../../redux/modules/search/actions/searchActions';
 import { getApiCallState } from '../../api/reducer/apiReducer';
 
 class DealsPageContainer extends Component {
@@ -10,10 +11,18 @@ class DealsPageContainer extends Component {
     const { apiCallState, searchResults, location } = this.props;
 
     return (
-      <DealsPage searchResults={searchResults} apiCallState={apiCallState} location={location} />
+      <DealsPage searchResults={searchResults} apiCallState={apiCallState} location={location} fetchFilterResults={this.props.fetchFilterResults} />
     );
   }
 }
+
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    fetchFilterResults,
+  },
+  dispatch,
+);
+
 
 const mapStateToProps = (state) => {
   const searchResults = getCars(state);
@@ -25,6 +34,7 @@ const mapStateToProps = (state) => {
 };
 
 DealsPageContainer.propTypes = {
+  fetchFilterResults: PropTypes.func.isRequired,
   searchResults: PropTypes.shape({
     cars: PropTypes.array,
     errorObject: PropTypes.object,
@@ -39,4 +49,4 @@ DealsPageContainer.propTypes = {
   }).isRequired,
 };
 
-export default connect(mapStateToProps)(DealsPageContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(DealsPageContainer);

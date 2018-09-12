@@ -66,7 +66,7 @@ export const fetchFilterResults = values => async (dispatch) => {
   try {
     const response = await apiClient(
       'get',
-      `/filter-search?passengers=${passengers}&insurance=${insurance}&bestFuel=${bestFuel}&model=${model}&color=${color}`,
+      `/search-filter?passengers=${passengers}&insurance=${insurance}&bestFuel=${bestFuel}&model=${model}&color=${color}`,
     );
     dispatch(fetchFilterRequestSuccess(response));
   } catch (error) {
