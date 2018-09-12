@@ -162,7 +162,7 @@ class DealsPage extends Component {
 
   onModelCheckAllChange = (e) => {
     this.setState({
-      MODEL: e.target.checked ? modelsOptions : [],
+      model: e.target.checked ? modelsOptions : [],
       indeterminate: false,
       modelCheckAll: e.target.checked,
     });
