@@ -5,41 +5,175 @@ import {
 import PropTypes from 'prop-types';
 import './DealsPage.css';
 
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+const { SubMenu } = Menu;
 const CheckboxGroup = Checkbox.Group;
-
-const passengers = ['1', '2', '3', '4'];
+const passengersOptions = ['1', '2', '3', '4'];
 const insuranceOptions = ['basic', 'good', 'premium'];
-const bestFuel = ['no', 'yes'];
-const models = ['Volkswagen', 'Porsche', 'Subaru', 'Mercedes', 'Ford'];
-const colors = ['red', 'green', 'yellow', 'white'];
-
+const bestFuelOptions = ['no', 'yes'];
+const modelsOptions = ['Volkswagen', 'Porsche', 'Subaru', 'Mercedes', 'Ford'];
+const colorsOptions = ['red', 'green', 'yellow', 'white', 'blue'];
 class DealsPage extends Component {
-  renderResults = results => results.map((result, index) => (
-    <Card bordered={false} key={index} className="car-info">
-      <p>
-          Passengers:
-        {result.passengers}
-      </p>
-      <p>
-          Insurance:
-        {result.insurance}
-      </p>
-      <p>
-          Best fuel option:
-        {result.bestFuel}
-      </p>
-    </Card>
-  ));
+  constructor(props) {
+    super(props);
+    const { values } = this.props.location.state;
+    console.log('model', values)
+
+    this.state = {
+      passengers: [values.passengers],
+      model: values.model === 'any' ? modelsOptions : [values.model],
+      color: values.color === 'any' ? colorsOptions : [values.color],
+      insurance: [values.insurance],
+      bestFuel: [values.bestFuel],
+      indeterminate: values.color !== 'any',
+      checkAll: values.color === 'any',
+      modelIndeterminate: values.model !== 'any',
+      modelCheckAll: values.model === 'any'
+    };
+  }
+
+  renderResults = results => results.map((result, index) => {
+    const { values } = this.props.location.state;
+    return (
+      <Card bordered={false} key={index} className="car-info">
+        <p>
+            Passengers:
+          {result.passengers}
+        </p>
+        <p>
+            Insurance:
+          {result.insurance}
+        </p>
+        <p>
+            Best fuel option:
+          {result.bestFuel}
+        </p>
+        <p>
+            Color:
+          {result.color}
+        </p>
+        <p>
+            Model:
+          {result.model}
+        </p>
+      </Card>
+    );
+  });
 
   onChange = (checkedValues) => {
-    console.log('checked = ', checkedValues);
+    const {
+      model, color, insurance, bestFuel,
+    } = this.state;
+    const { fetchFilterResults } = this.props;
+    const filter = {
+      passengers: checkedValues.join(','),
+      model: model.join(','),
+      color: color.join(','),
+      insurance: insurance.join(','),
+      bestFuel: bestFuel.join(','),
+    };
+    fetchFilterResults(filter);
+    this.setState({
+      passengers: checkedValues,
+    });
   };
+
+  modelOnChange = (checkedValues) => {
+    const {
+      passengers, color, insurance, bestFuel,
+    } = this.state;
+    const filter = {
+      passengers: passengers.join(','),
+      model: checkedValues.join(','),
+      color: color.join(','),
+      insurance: insurance.join(','),
+      bestFuel: bestFuel.join(','),
+    };
+    this.props.fetchFilterResults(filter);
+
+    this.setState({
+      model: checkedValues,
+      indeterminate: !!checkedValues.length && checkedValues.length < modelsOptions.length,
+      checkAll: checkedValues.length === modelsOptions.length,
+    });
+  };
+
+  colorOnChange = (checkedValues) => {
+    const {
+      passengers, model, insurance, bestFuel,
+    } = this.state;
+
+    const filter = {
+      passengers: passengers.join(','),
+      model: model.join(','),
+      color: checkedValues.join(','),
+      insurance: insurance.join(','),
+      bestFuel: bestFuel.join(','),
+    };
+    this.props.fetchFilterResults(filter);
+
+    this.setState({
+      color: checkedValues,
+      indeterminate: !!checkedValues.length && checkedValues.length < colorsOptions.length,
+      checkAll: checkedValues.length === colorsOptions.length,
+    });
+  };
+
+  insuranceOnChange = (checkedValues) => {
+    const {
+      passengers, color, model, bestFuel,
+    } = this.state;
+    const filter = {
+      passengers: passengers.join(','),
+      model: model.join(','),
+      color: color.join(','),
+      insurance: checkedValues.join(','),
+      bestFuel: bestFuel.join(','),
+    };
+    this.props.fetchFilterResults(filter);
+
+    this.setState({
+      insurance: checkedValues,
+    });
+  };
+
+  bestFueleOnChange = (checkedValues) => {
+    const {
+      passengers, color, insurance, model,
+    } = this.state;
+    const filter = {
+      passengers: passengers.join(','),
+      model: model.join(','),
+      color: color.join(','),
+      insurance: insurance.join(','),
+      bestFuel: checkedValues.join(','),
+    };
+    this.props.fetchFilterResults(filter);
+
+    this.setState({
+      bestFuel: checkedValues,
+    });
+  };
+
+  onCheckAllChange = (e) => {
+    this.setState({
+      color: e.target.checked ? colorsOptions : [],
+      indeterminate: false,
+      checkAll: e.target.checked,
+    });
+  };
+
+  onModelCheckAllChange = (e) => {
+    this.setState({
+      MODEL: e.target.checked ? modelsOptions : [],
+      indeterminate: false,
+      modelCheckAll: e.target.checked,
+    });
+  }
 
   render() {
     const { searchResults, location } = this.props;
     const { values } = location.state;
+
     return (
       <div className="search-results-container">
         <div>
@@ -60,8 +194,8 @@ class DealsPage extends Component {
               )}
             >
               <CheckboxGroup
-                className="colors-checkbox"
-                options={passengers}
+                className="search-checkbox"
+                options={passengersOptions}
                 defaultValue={[values.passengers]}
                 onChange={this.onChange}
               />
@@ -75,11 +209,20 @@ class DealsPage extends Component {
                 </span>
               )}
             >
+               <Checkbox
+                className="search-checkbox"
+                indeterminate={this.state.modelIndeterminate}
+                onChange={this.onModelCheckAllChange}
+                checked={this.state.modelCheckAll}
+              >
+                Check all
+              </Checkbox>
               <CheckboxGroup
-                className="colors-checkbox"
-                options={models}
+                className="search-checkbox"
+                options={modelsOptions}
                 defaultValue={[values.model]}
-                onChange={this.onChange}
+                onChange={this.modelOnChange}
+                value={this.state.model}
               />
             </SubMenu>
             <SubMenu
@@ -91,11 +234,20 @@ class DealsPage extends Component {
                 </span>
               )}
             >
+              <Checkbox
+                className="search-checkbox"
+                indeterminate={this.state.indeterminate}
+                onChange={this.onCheckAllChange}
+                checked={this.state.checkAll}
+              >
+                Check all
+              </Checkbox>
               <CheckboxGroup
-                className="colors-checkbox"
-                options={colors}
+                className="search-checkbox"
+                options={colorsOptions}
                 defaultValue={[values.color]}
-                onChange={this.onChange}
+                onChange={this.colorOnChange}
+                value={this.state.color}
               />
             </SubMenu>
             <SubMenu
@@ -108,10 +260,10 @@ class DealsPage extends Component {
               )}
             >
               <CheckboxGroup
-                className="colors-checkbox"
+                className="search-checkbox"
                 options={insuranceOptions}
                 defaultValue={[values.insurance]}
-                onChange={this.onChange}
+                onChange={this.insuranceOnChange}
               />
             </SubMenu>
             <SubMenu
@@ -124,10 +276,10 @@ class DealsPage extends Component {
               )}
             >
               <CheckboxGroup
-                className="colors-checkbox"
-                options={bestFuel}
+                className="search-checkbox"
+                options={bestFuelOptions}
                 defaultValue={[values.bestFuel]}
-                onChange={this.onChange}
+                onChange={this.bestFueleOnChange}
               />
             </SubMenu>
           </Menu>

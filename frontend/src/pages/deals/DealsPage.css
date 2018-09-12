@@ -2,7 +2,9 @@
   display: grid;
   grid-template-columns: 15% 85%;
   margin-top: 1rem;
+  margin-right: 2rem;
   height: 100%;
+  grid-column-gap: 2rem;
 }
 
 .search-results {
@@ -11,6 +13,7 @@
 .car-info {
   flex: 1 1 33.33%;
   box-shadow: 0 0 1rem 0 #efeeec;
+  border-right: 0.1rem solid;
 }
 
 .car-cards {
@@ -32,6 +35,6 @@
   margin: 0;
 }
 
-.colors-checkbox {
+.search-checkbox {
   margin: 0 3rem;
 }
