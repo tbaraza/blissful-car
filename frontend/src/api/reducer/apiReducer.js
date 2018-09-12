@@ -1,4 +1,4 @@
-import searchActionTypes from '../../pages/home/actions/actionTypes';
+import searchActionTypes from '../../redux/modules/search/searchReducer';
 
 export const getApiCallState = state => state.apiCallState;
 

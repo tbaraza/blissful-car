@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import HomePage from './HomePage';
-import { fetchSearchResults, getCars } from './actions/searchActions';
+import { fetchSearchResults, getCars } from '../../redux/modules/search/actions/searchActions';
 import { getApiCallState } from '../../api/reducer/apiReducer';
 
 class HomePageContainer extends Component {

@@ -7,7 +7,7 @@ import './App.css';
 
 const App = () => (
   <div>
-    <div className="container">
+    <div className="app-nav-bar">
       <p className="header">Blissful Car</p>
     </div>
     <BrowserRouter>
