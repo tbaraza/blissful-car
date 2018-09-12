@@ -19,7 +19,14 @@ module.exports = {
       insurance: 'basic',
       bestFuel: 'yes',
       model: 'Porsche',
-      color: 'green'
+      color: 'red'
+    },
+    {
+      passengers: [1, 2],
+      insurance: 'good',
+      bestFuel: 'yes',
+      model: 'Porsche',
+      color: 'red'
     },
     {
       passengers: [1, 2, 3, 4],
@@ -39,6 +46,13 @@ module.exports = {
       passengers: [1, 2, 3, 4, 5, 6, 7],
       insurance: 'good',
       bestFuel: 'yes',
+      model: 'Volkswagen',
+      color: 'green'
+    },
+    {
+      passengers: [1, 2, 3, 4, 5, 6, 7],
+      insurance: 'good',
+      bestFuel: 'no',
       model: 'Volkswagen',
       color: 'green'
     },

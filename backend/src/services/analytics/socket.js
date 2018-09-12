@@ -19,7 +19,6 @@ module.exports = (io) => {
     // a user has visited our page - add them to the visitorsData object
     socket.on('visitor-data', (data) => {
       visitorsData[socket.id] = data;
-      console.log('analytics---7', visitorsData);
       socket.emit('visitor-data', data);
 
       // compute and send visitor data to the dashboard when a new user visits our page
@@ -28,10 +27,8 @@ module.exports = (io) => {
 
     socket.on('search', () => {
       visitorsData.searches += 1;
-      console.log('analytics---7', visitorsData);
-      // socket.emit('visitor-data');
 
-      // compute and send visitor data to the dashboard when a new user visits our page
+      // compute and send visitor data to the dashboard when a user makes a search
       io.emit('updated-stats', computeStats(visitorsData));
     });
 
@@ -43,8 +40,6 @@ module.exports = (io) => {
       io.emit('updated-stats', computeStats(visitorsData));
     });
   });
-
-  console.log('analytics', visitorsData);
 
   return io;
 };

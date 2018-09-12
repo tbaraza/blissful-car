@@ -16,7 +16,6 @@ class DealsPage extends Component {
   constructor(props) {
     super(props);
     const { values } = this.props.location.state;
-    console.log('model', values)
 
     this.state = {
       passengers: [values.passengers],
@@ -32,7 +31,6 @@ class DealsPage extends Component {
   }
 
   renderResults = results => results.map((result, index) => {
-    const { values } = this.props.location.state;
     return (
       <Card bordered={false} key={index} className="car-info">
         <p>

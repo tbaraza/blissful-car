@@ -37,7 +37,6 @@ class DashboardPage extends Component {
       pages, referrers, activeUsers, searches,
     } = data;
 
-    console.log('data===', pages);
     this.setState({
       activeUsers,
       referrers: Object.keys(referrers).length,
@@ -49,11 +48,10 @@ class DashboardPage extends Component {
 
   render() {
     const {
-      pages, referrers, activeUsers, endpoint, searches, visits,
+      pages, activeUsers, endpoint, searches, visits,
     } = this.state;
     const socket = socketIOClient(endpoint);
     socket.on('updated-stats', (data) => {
-      console.log('client', data);
       this.getStats(data);
     });
 
