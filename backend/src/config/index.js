@@ -1,6 +1,4 @@
-const env = {
-  name: process.env.NODE_ENV,
-  apiVersion: process.env.API_VERSION || 'v1'
-};
+const env = process.env.NODE_ENV || 'development';
+const config = require(`./${env}`);
 
-module.exports = { env };
+module.exports = config;

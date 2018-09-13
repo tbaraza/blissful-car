@@ -1,4 +1,4 @@
-const data = require('models');
+const data = require('../../../models');
 const { isValidSearch } = require('../../../../helpers/validators/search');
 
 class SearchController {
@@ -14,7 +14,6 @@ class SearchController {
       });
     }
 
-    // const results = [];
     const {
       passengers, insurance, bestFuel, model, color
     } = req.query;
@@ -52,18 +51,13 @@ class SearchController {
       };
       tracker = passengers.split(',').reduce(reducer, true);
       const insuranceTracker = insurance.split(',').includes(car.insurance);
-      console.log('insurance-t', insuranceTracker, insurance.split(','));
       const bestFuelTracker = bestFuel.split(',').includes(car.bestFuel);
-      console.log('bestFuel-t', bestFuelTracker);
       const modelTracker = model.split(',').includes('any')
         ? true
         : model.split(',').includes(car.model);
-      console.log('model-t', modelTracker);
       const colorTracker = model.split(',').includes('any')
         ? true
         : color.split(',').includes(car.color);
-      console.log('color-t', colorTracker);
-
       return tracker && insuranceTracker && bestFuelTracker && modelTracker && colorTracker;
     });
 

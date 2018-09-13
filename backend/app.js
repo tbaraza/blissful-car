@@ -7,16 +7,16 @@ const expressSanitized = require('express-sanitize-escape');
 const http = require('http');
 const socketIo = require('socket.io');
 const analytics = require('./src/services/analytics/socket');
-const { env } = require('./src/config');
+const config = require('./src/config');
 
 const app = express();
 
-const port = process.env.PORT || 9000;
+const { port } = config;
 const server = http.createServer(app);
 const io = socketIo(server);
 
 // Log requests to the console
-if (env.name === 'development') {
+if (config.env === 'development') {
   app.use(logger('dev'));
 }
 
@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressSanitized.middleware());
 
-require(`${env.apiVersion}/routes`)(app);
+require(`./src/${config.apiVersion}/routes`)(app);
 
 // Set up default catch-all route that sends back a welcome message
 app.get('*', (req, res) => res.status(200).send({
