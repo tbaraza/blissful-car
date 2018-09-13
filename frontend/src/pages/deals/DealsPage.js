@@ -59,7 +59,7 @@ class DealsPage extends Component {
     const {
       model, color, insurance, bestFuel,
     } = this.state;
-    const { fetchFilterResults } = this.props;
+    const { fetchSearchResults } = this.props;
     const filter = {
       passengers: checkedValues.join(','),
       model: model.join(','),
@@ -67,7 +67,7 @@ class DealsPage extends Component {
       insurance: insurance.join(','),
       bestFuel: bestFuel.join(','),
     };
-    fetchFilterResults(filter);
+    fetchSearchResults(filter);
     this.setState({
       passengers: checkedValues,
     });
@@ -84,7 +84,7 @@ class DealsPage extends Component {
       insurance: insurance.join(','),
       bestFuel: bestFuel.join(','),
     };
-    this.props.fetchFilterResults(filter);
+    this.props.fetchSearchResults(filter);
 
     this.setState({
       model: checkedValues,
@@ -105,7 +105,7 @@ class DealsPage extends Component {
       insurance: insurance.join(','),
       bestFuel: bestFuel.join(','),
     };
-    this.props.fetchFilterResults(filter);
+    this.props.fetchSearchResults(filter);
 
     this.setState({
       color: checkedValues,
@@ -125,7 +125,7 @@ class DealsPage extends Component {
       insurance: checkedValues.join(','),
       bestFuel: bestFuel.join(','),
     };
-    this.props.fetchFilterResults(filter);
+    this.props.fetchSearchResults(filter);
 
     this.setState({
       insurance: checkedValues,
@@ -143,7 +143,7 @@ class DealsPage extends Component {
       insurance: insurance.join(','),
       bestFuel: checkedValues.join(','),
     };
-    this.props.fetchFilterResults(filter);
+    this.props.fetchSearchResults(filter);
 
     this.setState({
       bestFuel: checkedValues,
@@ -168,7 +168,7 @@ class DealsPage extends Component {
         insurance: insurance.join(','),
         bestFuel: bestFuel.join(','),
       };
-      this.props.fetchFilterResults(filter);
+      this.props.fetchSearchResults(filter);
     }
   };
 
@@ -190,7 +190,7 @@ class DealsPage extends Component {
         insurance: insurance.join(','),
         bestFuel: bestFuel.join(','),
       };
-      this.props.fetchFilterResults(filter);
+      this.props.fetchSearchResults(filter);
     }
   };
 

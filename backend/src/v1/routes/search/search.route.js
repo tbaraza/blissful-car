@@ -1,7 +1,6 @@
 const Router = require('express').Router();
-const Search = require('./search.controller');
+const SearchController = require('./search.controller');
 
-Router.route('/search').get(Search.defaultSearch);
-Router.route('/search-filter').get(Search.filterSearch);
+Router.route('/car-search').get(SearchController.Search);
 
 module.exports = Router;

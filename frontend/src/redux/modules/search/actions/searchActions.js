@@ -29,7 +29,7 @@ export const fetchSearchResults = values => async (dispatch) => {
   try {
     const response = await apiClient(
       'get',
-      `/search?passengers=${passengers}&insurance=${insurance}&bestFuel=${bestFuel}&model=${model}&color=${color}`,
+      `/car-search?passengers=${passengers}&insurance=${insurance}&bestFuel=${bestFuel}&model=${model}&color=${color}`,
     );
     dispatch(fetchSearchRequestSuccess(response));
   } catch (error) {
@@ -37,43 +37,6 @@ export const fetchSearchResults = values => async (dispatch) => {
       dispatch(fetchSearchRequestFail(error.response));
     } else {
       dispatch(fetchSearchRequestFail(error));
-    }
-  }
-};
-
-// filter search actions
-export const fetchFilterRequest = () => ({
-  type: searchActionTypes.FETCH_FILTER_RESULTS_REQUEST,
-});
-
-export const fetchFilterRequestSuccess = payload => ({
-  type: searchActionTypes.FETCH_FILTER_RESULTS_REQUEST_SUCCESS,
-  cars: payload.data,
-});
-
-export const fetchFilterRequestFail = error => ({
-  type: searchActionTypes.FETCH_FILTER_RESULTS_REQUEST_FAIL,
-  error,
-});
-
-export const fetchFilterResults = values => async (dispatch) => {
-  const {
-    passengers, insurance, bestFuel, model, color,
-  } = values;
-
-  dispatch(fetchFilterRequest());
-
-  try {
-    const response = await apiClient(
-      'get',
-      `/search-filter?passengers=${passengers}&insurance=${insurance}&bestFuel=${bestFuel}&model=${model}&color=${color}`,
-    );
-    dispatch(fetchFilterRequestSuccess(response));
-  } catch (error) {
-    if (error.response) {
-      dispatch(fetchFilterRequestFail(error.response));
-    } else {
-      dispatch(fetchFilterRequestFail(error));
     }
   }
 };

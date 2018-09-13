@@ -8,7 +8,6 @@ const DEFAULT_STATE = {
 const fetchSearch = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
   case searchActionTypes.FETCH_SEARCH_RESULTS_REQUEST:
-  case searchActionTypes.FETCH_FILTER_RESULTS_REQUEST:
     return {
       ...state,
       cars: [],
@@ -16,7 +15,6 @@ const fetchSearch = (state = DEFAULT_STATE, action) => {
     };
 
   case searchActionTypes.FETCH_SEARCH_RESULTS_REQUEST_SUCCESS:
-  case searchActionTypes.FETCH_FILTER_RESULTS_REQUEST_SUCCESS:
     return {
       ...state,
       cars: action.cars,
@@ -24,7 +22,6 @@ const fetchSearch = (state = DEFAULT_STATE, action) => {
     };
 
   case searchActionTypes.FETCH_SEARCH_RESULTS_REQUEST_FAIL:
-  case searchActionTypes.FETCH_FILTER_RESULTS_REQUEST_FAIL:
     return {
       ...state,
       cars: [],
