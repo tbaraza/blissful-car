@@ -1,38 +1,34 @@
-const data = require('../../../models');
+const data = require('models');
+const { isValidSearch } = require('../../../../helpers/validators/search');
 
 class SearchController {
   static defaultSearch(req, res) {
-    const results = [];
-    const {
-      passengers, insurance, bestFuel, model, color
-    } = req.query;
-    if (passengers && insurance && bestFuel && model && color) {
-      data.cars.map((car) => {
-        if (
-          car.passengers.includes(Number(passengers))
-          && car.insurance === insurance
-          && car.bestFuel === bestFuel
-          && (car.model === model || car.model === 'any')
-          && (car.color === color || car.color === 'any')
-        ) {
-          results.push(car);
-        }
-        return results;
+    const validationErrors = isValidSearch(req.query);
+
+    // Check for validation errors
+    if (validationErrors.length > 0) {
+      return res.status(500).json({
+        success: false,
+        message: 'Missing required properties',
+        errors: validationErrors
       });
     }
 
-    if (passengers && insurance && bestFuel) {
-      data.cars.map((car) => {
-        if (
-          car.passengers.includes(Number(passengers))
-          && car.insurance === insurance
-          && car.bestFuel === bestFuel
-        ) {
-          results.push(car);
-        }
-        return results;
-      });
-    }
+    // const results = [];
+    const {
+      passengers, insurance, bestFuel, model, color
+    } = req.query;
+
+    const results = data.cars.filter((car) => {
+      const tracker = car.passengers.includes(Number(passengers));
+      const insuranceTracker = car.insurance === insurance;
+      const bestFuelTracker = car.bestFuel === bestFuel;
+      const modelTracker = car.model === model || model === 'any';
+      const colorTracker = car.color === color || color === 'any';
+
+      return tracker && insuranceTracker && bestFuelTracker && modelTracker && colorTracker;
+    });
+
     return res.status(200).json({
       success: true,
       message: 'Here are your results',
