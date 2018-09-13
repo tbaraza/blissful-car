@@ -26,36 +26,34 @@ class DealsPage extends Component {
       indeterminate: values.color !== 'any',
       checkAll: values.color === 'any',
       modelIndeterminate: values.model !== 'any',
-      modelCheckAll: values.model === 'any'
+      modelCheckAll: values.model === 'any',
     };
   }
 
-  renderResults = results => results.map((result, index) => {
-    return (
-      <Card bordered={false} key={index} className="car-info">
-        <p>
-            Passengers:
-          {result.passengers}
-        </p>
-        <p>
-            Insurance:
-          {result.insurance}
-        </p>
-        <p>
-            Best fuel option:
-          {result.bestFuel}
-        </p>
-        <p>
-            Color:
-          {result.color}
-        </p>
-        <p>
-            Model:
-          {result.model}
-        </p>
-      </Card>
-    );
-  });
+  renderResults = results => results.map((result, index) => (
+    <Card bordered={false} key={index} className="car-info">
+      <p>
+          Passengers:
+        {result.passengers}
+      </p>
+      <p>
+          Insurance:
+        {result.insurance}
+      </p>
+      <p>
+          Best fuel option:
+        {result.bestFuel}
+      </p>
+      <p>
+          Color:
+        {result.color}
+      </p>
+      <p>
+          Model:
+        {result.model}
+      </p>
+    </Card>
+  ));
 
   onChange = (checkedValues) => {
     const {
@@ -158,6 +156,20 @@ class DealsPage extends Component {
       indeterminate: false,
       checkAll: e.target.checked,
     });
+    const {
+      passengers, model, insurance, bestFuel,
+    } = this.state;
+
+    if (e.target.checked) {
+      const filter = {
+        passengers: passengers.join(','),
+        model: model.join(','),
+        color: colorsOptions,
+        insurance: insurance.join(','),
+        bestFuel: bestFuel.join(','),
+      };
+      this.props.fetchFilterResults(filter);
+    }
   };
 
   onModelCheckAllChange = (e) => {
@@ -166,7 +178,21 @@ class DealsPage extends Component {
       indeterminate: false,
       modelCheckAll: e.target.checked,
     });
-  }
+
+    if (e.target.checked) {
+      const {
+        passengers, color, insurance, bestFuel,
+      } = this.state;
+      const filter = {
+        passengers: passengers.join(','),
+        model: modelsOptions,
+        color: color.join(','),
+        insurance: insurance.join(','),
+        bestFuel: bestFuel.join(','),
+      };
+      this.props.fetchFilterResults(filter);
+    }
+  };
 
   render() {
     const { searchResults, location } = this.props;
@@ -207,7 +233,7 @@ class DealsPage extends Component {
                 </span>
               )}
             >
-               <Checkbox
+              <Checkbox
                 className="search-checkbox"
                 indeterminate={this.state.modelIndeterminate}
                 onChange={this.onModelCheckAllChange}
