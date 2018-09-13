@@ -25,7 +25,6 @@ describe('Search endpoints', () => {
         .request(app)
         .get('/api/v1/search?passengers=1&insurance=good&bestFuel=yes')
         .end((err, res) => {
-          console.log('response2--->', res.body);
           expect(err).to.be.null;
           expect(res).to.have.status(200);
           expect(res.body.success).to.be.true;
@@ -39,7 +38,6 @@ describe('Search endpoints', () => {
         .request(app)
         .get('/api/v1/search?passengers=1&insurance=good&bestFuel=yes&model=any&color=any')
         .end((err, res) => {
-          console.log('response', res.body);
           expect(err).to.be.null;
           expect(res).to.have.status(200);
           expect(res.body.success).to.be.true;
