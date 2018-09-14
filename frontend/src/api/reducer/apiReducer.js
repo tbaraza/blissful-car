@@ -1,4 +1,4 @@
-import searchActionTypes from '../../redux/modules/search/searchReducer';
+import searchActionTypes from '../../redux/modules/search/actions/actionTypes';
 
 export const getApiCallState = state => state.apiCallState;
 
@@ -13,6 +13,7 @@ const reducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
   case searchActionTypes.FETCH_SEARCH_RESULTS_REQUEST:
     return {
+      ...state,
       error: false,
       loading: true,
       success: false,
@@ -20,6 +21,7 @@ const reducer = (state = DEFAULT_STATE, action) => {
 
   case searchActionTypes.FETCH_SEARCH_RESULTS_REQUEST_SUCCESS:
     return {
+      ...state,
       error: false,
       loading: false,
       success: true,
@@ -27,6 +29,7 @@ const reducer = (state = DEFAULT_STATE, action) => {
 
   case searchActionTypes.FETCH_SEARCH_RESULTS_REQUEST_FAIL:
     return {
+      ...state,
       error: true,
       loading: false,
       success: false,
