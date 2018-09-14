@@ -1,4 +1,5 @@
 const computeStats = require('./analytics');
+const config = require('../../config');
 
 module.exports = (io) => {
   const visitorsData = {
@@ -6,11 +7,10 @@ module.exports = (io) => {
   };
 
   io.on('connection', (socket) => {
-    // a user has visited our page - add them to the visitorsData object
     console.log('a user connected');
 
     if (
-      socket.handshake.headers.host === 'http://127.0.0.1:9000'
+      socket.handshake.headers.host === `http://127.0.0.1:${config.port}`
       && socket.handshake.headers.referer.indexOf('http://127.0.0.1:3000/dashboard') > -1
     ) {
       // if someone visits '/dashboard' send them the computed visitor data
@@ -38,6 +38,10 @@ module.exports = (io) => {
 
       // compute and send visitor data to the dashboard when a user leaves our page
       io.emit('updated-stats', computeStats(visitorsData));
+    });
+
+    socket.on('echo', (msg) => {
+      io.emit('echo', msg);
     });
   });
 

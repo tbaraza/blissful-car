@@ -9,6 +9,7 @@ import HomePageContainer from '../HomePageContainer';
 
 Enzyme.configure({ adapter: new Adapter() });
 let wrapper;
+let store;
 const mockStore = configureMockStore();
 const props = {
   fetchSearchResults: jest.fn(),
@@ -21,13 +22,13 @@ const props = {
 
 beforeEach(() => {
   // creates the store with any initial state or middleware needed
-  const store = mockStore(props);
+  store = mockStore({});
   wrapper = shallow(<HomePageContainer store={store} />);
 });
 
 describe('<HomePage/>', () => {
   it('renders correctly', () => {
-    wrapper = shallow(<HomePage {...props} />);
+    const wrapper = shallow(<HomePage {...props} />);
     const tree = renderer.create(wrapper).toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -42,5 +43,16 @@ describe('<HomePage/>', () => {
 
   //     expect(mockOnClick.mock.calls.length).toEqual(1);
   //   });
+  // });
+
+  // it('dispatches event to show the avatar selection list', () => {
+  //   const component = wrapper.dive();
+
+  //   component
+  //     .find(HomePage)
+  //     .props()
+  //     .onSubmit();
+
+  //   expect(store.getActions()).toMatchSnapshot();
   // });
 });

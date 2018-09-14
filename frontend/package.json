@@ -21,10 +21,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "coverage": "yarn test -- --coverage",
+    "coverage": "yarn test -- --coverage > coverage.lcov && node_modules/codecov/bin/codecov",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "codecov": "^3.1.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "eslint": "^5.5.0",

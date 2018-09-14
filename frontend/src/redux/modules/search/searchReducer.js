@@ -5,7 +5,7 @@ const DEFAULT_STATE = {
   errorObject: {},
 };
 
-const fetchSearch = (state = DEFAULT_STATE, action) => {
+const reducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
   case searchActionTypes.FETCH_SEARCH_RESULTS_REQUEST:
     return {
@@ -33,4 +33,4 @@ const fetchSearch = (state = DEFAULT_STATE, action) => {
   }
 };
 
-export default fetchSearch;
+export default reducer;
