@@ -23,10 +23,6 @@ class HomePage extends Component {
     };
   }
 
-  handleSelectChange = (value) => {
-    console.log(value);
-  };
-
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {

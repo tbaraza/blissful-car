@@ -1,0 +1,826 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomePage/> renders correctly 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="ant-card ant-card-bordered"
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <form
+        className="ant-form ant-form-horizontal"
+        onSubmit={[Function]}
+      >
+        <div
+          className="ant-row ant-form-item"
+          style={undefined}
+        >
+          <div
+            className="ant-col-5 ant-form-item-label"
+          >
+            <label
+              className="ant-form-item-required"
+              htmlFor="passengers"
+              onClick={[Function]}
+              title="Passengers"
+            >
+              Passengers
+            </label>
+          </div>
+          <div
+            className="ant-col-12 ant-form-item-control-wrapper"
+          >
+            <div
+              className="ant-form-item-control"
+            >
+              <span
+                className="ant-form-item-children"
+              >
+                <div
+                  className="ant-select ant-select-enabled"
+                  id="passengers"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onContextMenu={undefined}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={undefined}
+                  onMouseLeave={undefined}
+                  onTouchStart={[Function]}
+                  style={undefined}
+                >
+                  <div
+                    aria-autocomplete="list"
+                    aria-expanded={false}
+                    aria-haspopup="true"
+                    className="ant-select-selection
+                              ant-select-selection--single"
+                    data-__field={
+                      Object {
+                        "name": "passengers",
+                      }
+                    }
+                    data-__meta={
+                      Object {
+                        "name": "passengers",
+                        "originalProps": Object {
+                          "children": Array [
+                            <Option
+                              value="1"
+                      >
+                              1
+                      </Option>,
+                            <Option
+                              value="2"
+                      >
+                              2
+                      </Option>,
+                            <Option
+                              value="3"
+                      >
+                              3
+                      </Option>,
+                            <Option
+                              value="4"
+                      >
+                              4
+                      </Option>,
+                          ],
+                          "choiceTransitionName": "zoom",
+                          "onChange": undefined,
+                          "placeholder": "Select number of passengers",
+                          "prefixCls": "ant-select",
+                          "showSearch": false,
+                          "transitionName": "slide-up",
+                        },
+                        "ref": null,
+                        "rules": Array [
+                          Object {
+                            "message": "Please select number of passengers!",
+                            "required": true,
+                          },
+                        ],
+                        "trigger": "onChange",
+                        "validate": Array [
+                          Object {
+                            "rules": Array [
+                              Object {
+                                "message": "Please select number of passengers!",
+                                "required": true,
+                              },
+                            ],
+                            "trigger": Array [
+                              "onChange",
+                            ],
+                          },
+                        ],
+                        "valuePropName": "value",
+                      }
+                    }
+                    onKeyDown={[Function]}
+                    role="combobox"
+                    tabIndex={0}
+                  >
+                    <div
+                      className="ant-select-selection__rendered"
+                    >
+                      <div
+                        className="ant-select-selection__placeholder"
+                        onClick={[Function]}
+                        onMouseDown={[Function]}
+                        style={
+                          Object {
+                            "WebkitUserSelect": "none",
+                            "display": "block",
+                            "userSelect": "none",
+                          }
+                        }
+                        unselectable="on"
+                      >
+                        Select number of passengers
+                      </div>
+                    </div>
+                    <span
+                      className="ant-select-arrow"
+                      onClick={[Function]}
+                      style={
+                        Object {
+                          "WebkitUserSelect": "none",
+                          "userSelect": "none",
+                        }
+                      }
+                      unselectable="on"
+                    >
+                      <i
+                        className="anticon anticon-down ant-select-arrow-icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className=""
+                          data-icon="down"
+                          fill="currentColor"
+                          height="1em"
+                          onClick={undefined}
+                          style={undefined}
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </i>
+                    </span>
+                  </div>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ant-row ant-form-item"
+          style={undefined}
+        >
+          <div
+            className="ant-col-5 ant-form-item-label"
+          >
+            <label
+              className=""
+              htmlFor="model"
+              onClick={[Function]}
+              title="Model"
+            >
+              Model
+            </label>
+          </div>
+          <div
+            className="ant-col-12 ant-form-item-control-wrapper"
+          >
+            <div
+              className="ant-form-item-control has-success"
+            >
+              <span
+                className="ant-form-item-children"
+              >
+                <div
+                  className="ant-select ant-select-enabled"
+                  id="model"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onContextMenu={undefined}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={undefined}
+                  onMouseLeave={undefined}
+                  onTouchStart={[Function]}
+                  style={undefined}
+                >
+                  <div
+                    aria-autocomplete="list"
+                    aria-expanded={false}
+                    aria-haspopup="true"
+                    className="ant-select-selection
+                              ant-select-selection--single"
+                    data-__field={
+                      Object {
+                        "name": "model",
+                      }
+                    }
+                    data-__meta={
+                      Object {
+                        "initialValue": "any",
+                        "name": "model",
+                        "originalProps": Object {
+                          "children": Array [
+                            <Option
+                              value="any"
+                      >
+                              any
+                      </Option>,
+                            <Option
+                              value="Ford"
+                      >
+                              Ford
+                      </Option>,
+                            <Option
+                              value="Mercedes"
+                      >
+                              Mercedes
+                      </Option>,
+                            <Option
+                              value="Porsche"
+                      >
+                              Porsche
+                      </Option>,
+                            <Option
+                              value="Subaru"
+                      >
+                              Subaru
+                      </Option>,
+                          ],
+                          "choiceTransitionName": "zoom",
+                          "onChange": undefined,
+                          "prefixCls": "ant-select",
+                          "showSearch": false,
+                          "transitionName": "slide-up",
+                        },
+                        "ref": null,
+                        "trigger": "onChange",
+                        "validate": Array [],
+                        "valuePropName": "value",
+                      }
+                    }
+                    onKeyDown={[Function]}
+                    role="combobox"
+                    tabIndex={0}
+                  >
+                    <div
+                      className="ant-select-selection__rendered"
+                    >
+                      <div
+                        className="ant-select-selection-selected-value"
+                        style={
+                          Object {
+                            "display": "block",
+                            "opacity": 1,
+                          }
+                        }
+                        title="any"
+                      >
+                        any
+                      </div>
+                    </div>
+                    <span
+                      className="ant-select-arrow"
+                      onClick={[Function]}
+                      style={
+                        Object {
+                          "WebkitUserSelect": "none",
+                          "userSelect": "none",
+                        }
+                      }
+                      unselectable="on"
+                    >
+                      <i
+                        className="anticon anticon-down ant-select-arrow-icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className=""
+                          data-icon="down"
+                          fill="currentColor"
+                          height="1em"
+                          onClick={undefined}
+                          style={undefined}
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </i>
+                    </span>
+                  </div>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ant-row ant-form-item"
+          style={undefined}
+        >
+          <div
+            className="ant-col-5 ant-form-item-label"
+          >
+            <label
+              className=""
+              htmlFor="color"
+              onClick={[Function]}
+              title="Color"
+            >
+              Color
+            </label>
+          </div>
+          <div
+            className="ant-col-12 ant-form-item-control-wrapper"
+          >
+            <div
+              className="ant-form-item-control has-success"
+            >
+              <span
+                className="ant-form-item-children"
+              >
+                <div
+                  className="ant-select ant-select-enabled"
+                  id="color"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onContextMenu={undefined}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={undefined}
+                  onMouseLeave={undefined}
+                  onTouchStart={[Function]}
+                  style={undefined}
+                >
+                  <div
+                    aria-autocomplete="list"
+                    aria-expanded={false}
+                    aria-haspopup="true"
+                    className="ant-select-selection
+                              ant-select-selection--single"
+                    data-__field={
+                      Object {
+                        "name": "color",
+                      }
+                    }
+                    data-__meta={
+                      Object {
+                        "initialValue": "any",
+                        "name": "color",
+                        "originalProps": Object {
+                          "children": Array [
+                            <Option
+                              value="any"
+                      >
+                              any
+                      </Option>,
+                            <Option
+                              value="green"
+                      >
+                              green
+                      </Option>,
+                            <Option
+                              value="blue"
+                      >
+                              blue
+                      </Option>,
+                            <Option
+                              value="black"
+                      >
+                              black
+                      </Option>,
+                          ],
+                          "choiceTransitionName": "zoom",
+                          "onChange": undefined,
+                          "prefixCls": "ant-select",
+                          "showSearch": false,
+                          "transitionName": "slide-up",
+                        },
+                        "ref": null,
+                        "trigger": "onChange",
+                        "validate": Array [],
+                        "valuePropName": "value",
+                      }
+                    }
+                    onKeyDown={[Function]}
+                    role="combobox"
+                    tabIndex={0}
+                  >
+                    <div
+                      className="ant-select-selection__rendered"
+                    >
+                      <div
+                        className="ant-select-selection-selected-value"
+                        style={
+                          Object {
+                            "display": "block",
+                            "opacity": 1,
+                          }
+                        }
+                        title="any"
+                      >
+                        any
+                      </div>
+                    </div>
+                    <span
+                      className="ant-select-arrow"
+                      onClick={[Function]}
+                      style={
+                        Object {
+                          "WebkitUserSelect": "none",
+                          "userSelect": "none",
+                        }
+                      }
+                      unselectable="on"
+                    >
+                      <i
+                        className="anticon anticon-down ant-select-arrow-icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className=""
+                          data-icon="down"
+                          fill="currentColor"
+                          height="1em"
+                          onClick={undefined}
+                          style={undefined}
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </i>
+                    </span>
+                  </div>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ant-row ant-form-item"
+          style={undefined}
+        >
+          <div
+            className="ant-col-5 ant-form-item-label"
+          >
+            <label
+              className="ant-form-item-required"
+              htmlFor="insurance"
+              onClick={[Function]}
+              title="Insurance"
+            >
+              Insurance
+            </label>
+          </div>
+          <div
+            className="ant-col-12 ant-form-item-control-wrapper"
+          >
+            <div
+              className="ant-form-item-control"
+            >
+              <span
+                className="ant-form-item-children"
+              >
+                <div
+                  className="ant-select ant-select-enabled"
+                  id="insurance"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onContextMenu={undefined}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={undefined}
+                  onMouseLeave={undefined}
+                  onTouchStart={[Function]}
+                  style={undefined}
+                >
+                  <div
+                    aria-autocomplete="list"
+                    aria-expanded={false}
+                    aria-haspopup="true"
+                    className="ant-select-selection
+                              ant-select-selection--single"
+                    data-__field={
+                      Object {
+                        "name": "insurance",
+                      }
+                    }
+                    data-__meta={
+                      Object {
+                        "name": "insurance",
+                        "originalProps": Object {
+                          "children": Array [
+                            <Option
+                              value="good"
+                      >
+                              good
+                      </Option>,
+                            <Option
+                              value="basic"
+                      >
+                              basic
+                      </Option>,
+                            <Option
+                              value="premium"
+                      >
+                              premium
+                      </Option>,
+                          ],
+                          "choiceTransitionName": "zoom",
+                          "onChange": undefined,
+                          "placeholder": "Select type of insurance",
+                          "prefixCls": "ant-select",
+                          "showSearch": false,
+                          "transitionName": "slide-up",
+                        },
+                        "ref": null,
+                        "rules": Array [
+                          Object {
+                            "message": "Please select type of insurance!",
+                            "required": true,
+                          },
+                        ],
+                        "trigger": "onChange",
+                        "validate": Array [
+                          Object {
+                            "rules": Array [
+                              Object {
+                                "message": "Please select type of insurance!",
+                                "required": true,
+                              },
+                            ],
+                            "trigger": Array [
+                              "onChange",
+                            ],
+                          },
+                        ],
+                        "valuePropName": "value",
+                      }
+                    }
+                    onKeyDown={[Function]}
+                    role="combobox"
+                    tabIndex={0}
+                  >
+                    <div
+                      className="ant-select-selection__rendered"
+                    >
+                      <div
+                        className="ant-select-selection__placeholder"
+                        onClick={[Function]}
+                        onMouseDown={[Function]}
+                        style={
+                          Object {
+                            "WebkitUserSelect": "none",
+                            "display": "block",
+                            "userSelect": "none",
+                          }
+                        }
+                        unselectable="on"
+                      >
+                        Select type of insurance
+                      </div>
+                    </div>
+                    <span
+                      className="ant-select-arrow"
+                      onClick={[Function]}
+                      style={
+                        Object {
+                          "WebkitUserSelect": "none",
+                          "userSelect": "none",
+                        }
+                      }
+                      unselectable="on"
+                    >
+                      <i
+                        className="anticon anticon-down ant-select-arrow-icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className=""
+                          data-icon="down"
+                          fill="currentColor"
+                          height="1em"
+                          onClick={undefined}
+                          style={undefined}
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </i>
+                    </span>
+                  </div>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ant-row ant-form-item"
+          style={undefined}
+        >
+          <div
+            className="ant-col-5 ant-form-item-label"
+          >
+            <label
+              className="ant-form-item-required"
+              htmlFor="bestFuel"
+              onClick={[Function]}
+              title="Fuel"
+            >
+              Fuel
+            </label>
+          </div>
+          <div
+            className="ant-col-12 ant-form-item-control-wrapper"
+          >
+            <div
+              className="ant-form-item-control"
+            >
+              <span
+                className="ant-form-item-children"
+              >
+                <div
+                  className="ant-select ant-select-enabled"
+                  id="bestFuel"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onContextMenu={undefined}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={undefined}
+                  onMouseLeave={undefined}
+                  onTouchStart={[Function]}
+                  style={undefined}
+                >
+                  <div
+                    aria-autocomplete="list"
+                    aria-expanded={false}
+                    aria-haspopup="true"
+                    className="ant-select-selection
+                              ant-select-selection--single"
+                    data-__field={
+                      Object {
+                        "name": "bestFuel",
+                      }
+                    }
+                    data-__meta={
+                      Object {
+                        "name": "bestFuel",
+                        "originalProps": Object {
+                          "children": Array [
+                            <Option
+                              value="yes"
+                      >
+                              yes
+                      </Option>,
+                            <Option
+                              value="no"
+                      >
+                              no
+                      </Option>,
+                          ],
+                          "choiceTransitionName": "zoom",
+                          "onChange": undefined,
+                          "placeholder": "Do you want the best fuel option?",
+                          "prefixCls": "ant-select",
+                          "showSearch": false,
+                          "transitionName": "slide-up",
+                        },
+                        "ref": null,
+                        "rules": Array [
+                          Object {
+                            "message": "Please select fuel option!",
+                            "required": true,
+                          },
+                        ],
+                        "trigger": "onChange",
+                        "validate": Array [
+                          Object {
+                            "rules": Array [
+                              Object {
+                                "message": "Please select fuel option!",
+                                "required": true,
+                              },
+                            ],
+                            "trigger": Array [
+                              "onChange",
+                            ],
+                          },
+                        ],
+                        "valuePropName": "value",
+                      }
+                    }
+                    onKeyDown={[Function]}
+                    role="combobox"
+                    tabIndex={0}
+                  >
+                    <div
+                      className="ant-select-selection__rendered"
+                    >
+                      <div
+                        className="ant-select-selection__placeholder"
+                        onClick={[Function]}
+                        onMouseDown={[Function]}
+                        style={
+                          Object {
+                            "WebkitUserSelect": "none",
+                            "display": "block",
+                            "userSelect": "none",
+                          }
+                        }
+                        unselectable="on"
+                      >
+                        Do you want the best fuel option?
+                      </div>
+                    </div>
+                    <span
+                      className="ant-select-arrow"
+                      onClick={[Function]}
+                      style={
+                        Object {
+                          "WebkitUserSelect": "none",
+                          "userSelect": "none",
+                        }
+                      }
+                      unselectable="on"
+                    >
+                      <i
+                        className="anticon anticon-down ant-select-arrow-icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className=""
+                          data-icon="down"
+                          fill="currentColor"
+                          height="1em"
+                          onClick={undefined}
+                          style={undefined}
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </i>
+                    </span>
+                  </div>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ant-row ant-form-item"
+          style={undefined}
+        >
+          <div
+            className="ant-col-12 ant-col-offset-5 ant-form-item-control-wrapper"
+          >
+            <div
+              className="ant-form-item-control"
+            >
+              <span
+                className="ant-form-item-children"
+              >
+                <button
+                  className="ant-btn ant-btn-primary"
+                  onClick={[Function]}
+                  type="submit"
+                >
+                  <span>
+                    Find Deals
+                  </span>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
