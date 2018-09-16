@@ -13,7 +13,6 @@ describe('Search endpoints', () => {
         .request(app)
         .get('/api/v1/car-search?passengers=1&insurance=good&bestFuel=yes')
         .end((err, res) => {
-          console.log('para', res.status);
           expect(err).to.be.null;
           expect(res).to.have.status(200);
           expect(res.body.success).to.be.true;

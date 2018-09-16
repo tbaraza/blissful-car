@@ -1,7 +1,9 @@
-// get the total number of users on each page of our site
 const computePageCounts = (visitorsData) => {
-  // sample data in pageCounts object:
-  // { "/": 13, "/about": 5 }
+  /** get the total number of users on each page of our site
+   * sample data in pageCounts object:
+   * { "/": 13, "/about": 5 }
+   */
+
   const pageCounts = {};
   /**
    * for..in loops iterate over the entire prototype chain, which is virtually never what you want.
@@ -19,14 +21,15 @@ const computePageCounts = (visitorsData) => {
   return pageCounts;
 };
 
-// get the total number of users per referring site
 const computeRefererCounts = (visitorsData) => {
-  // sample data in referrerCounts object:
-  // { "http://twitter.com/": 3, "http://stackoverflow.com/": 6 }
+  /** get the total number of users per referring site
+   * sample data in referrerCounts object:
+   * { "/": 3, "/deals": 6 }
+   */
   const referrerCounts = {};
   const socketIDs = Object.keys(visitorsData);
   for (let id = 0; id < socketIDs.length; id++) {
-    const { referringSite } = visitorsData[socketIDs[id]] || '(direct)';
+    const { referringSite } = visitorsData[socketIDs[id]] || 'direct';
     if (referringSite in referrerCounts) {
       referrerCounts[referringSite] += 1;
     } else {
@@ -36,19 +39,23 @@ const computeRefererCounts = (visitorsData) => {
   return referrerCounts;
 };
 
-// get the total active users on our site
 const getActiveUsers = visitorsData => Object.keys(visitorsData).length;
 
-module.exports = (visitorsData) => {
-  // wrapper function to compute the stats and return a object with the updated stats
-  if (Object.keys(visitorsData).length === 0) {
-    return {};
+// get the total number of searches made on our site
+const getSearches = searchData => ({ searches: Object.keys(searchData).length });
+
+module.exports = {
+  computePageStats(visitorsData) {
+    const stats = {
+      pages: computePageCounts(visitorsData),
+      referrers: computeRefererCounts(visitorsData),
+      activeUsers: getActiveUsers(visitorsData)
+    };
+
+    return stats;
+  },
+
+  computeSearchStats(searchData) {
+    return getSearches(searchData);
   }
-  const computeStats = {
-    pages: computePageCounts(visitorsData),
-    referrers: computeRefererCounts(visitorsData),
-    activeUsers: getActiveUsers(visitorsData),
-    searches: visitorsData.searches
-  };
-  return computeStats;
 };

@@ -6,7 +6,7 @@ const cors = require('cors');
 const expressSanitized = require('express-sanitize-escape');
 const http = require('http');
 const socketIo = require('socket.io');
-const analytics = require('./src/services/analytics/socket');
+const socketServer = require('./src/services/analytics/socket');
 const config = require('./src/config');
 
 const app = express();
@@ -34,7 +34,7 @@ app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to wonderful beginnings'
 }));
 
-analytics(io);
+socketServer(io);
 
 server.listen(port, (err) => {
   if (err) {
@@ -44,4 +44,4 @@ server.listen(port, (err) => {
   }
 });
 
-module.exports = app;
+module.exports = server;
