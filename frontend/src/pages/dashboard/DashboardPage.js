@@ -19,29 +19,20 @@ class DashboardPage extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   console.log('haiaaa');
-  //   const socket = socketIOClient(this.state.endpoint);
-  //   socket.on('updated-stats', (data) => {
-  //     console.log('client', data);
-  //     this.setState({
-  //       activeUsers: data.activeUsers,
-  //       referrers: Object.keys(data.referrers).length,
-  //       pages: Object.keys(data.pages).length,
-  //     });
-  //   });
-  // }
-
-  getStats = (data) => {
-    const {
-      pages, referrers, activeUsers, searches,
-    } = data;
+  getPageStats = (visitorData) => {
+    const { pages, referrers, activeUsers } = visitorData;
 
     this.setState({
       activeUsers,
       referrers: Object.keys(referrers).length,
       pages,
       visits: Object.keys(pages).length,
+    });
+  };
+
+  getSearchStats = (searchData) => {
+    const { searches } = searchData;
+    this.setState({
       searches,
     });
   };
@@ -52,7 +43,11 @@ class DashboardPage extends Component {
     } = this.state;
     const socket = socketIOClient(endpoint);
     socket.on('updated-stats', (data) => {
-      this.getStats(data);
+      this.getPageStats(data);
+    });
+
+    socket.on('search-stats', (data) => {
+      this.getSearchStats(data);
     });
 
     const data = [
