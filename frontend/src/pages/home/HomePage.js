@@ -43,7 +43,7 @@ class HomePage extends Component {
               values,
             });
 
-            socket.emit('search');
+            socket.emit('search', { page: '/' });
           }
         });
       }
@@ -54,7 +54,7 @@ class HomePage extends Component {
     notification.open({
       message,
       description,
-      icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
+      icon: <Icon type="frown" style={{ color: '#108ee9' }} />,
     });
   };
 

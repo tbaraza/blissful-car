@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Card, Icon, Tooltip, Menu, Checkbox,
+  Card, Icon, Tooltip, Menu, Checkbox, notification
 } from 'antd';
 import PropTypes from 'prop-types';
 import './DealsPage.css';
@@ -27,7 +27,22 @@ class DealsPage extends Component {
       checkAll: values.color === 'any',
       modelIndeterminate: values.model !== 'any',
       modelCheckAll: values.model === 'any',
+      loading: false
     };
+  }
+
+  componentWillMount() {
+    const {
+      passengers, model, color, insurance, bestFuel,
+    } = this.state;
+    const filter = {
+      passengers: passengers.join(','),
+      model: model.join(','),
+      color: color.join(','),
+      insurance: insurance.join(','),
+      bestFuel: bestFuel.join(','),
+    };
+    this.props.fetchSearchResults(filter);
   }
 
   renderResults = results => results.map((result, index) => (
@@ -67,10 +82,14 @@ class DealsPage extends Component {
       insurance: insurance.join(','),
       bestFuel: bestFuel.join(','),
     };
+    if (checkedValues.length === 0) {
+      this.openNotification('Oooops!', 'Please select number of passengers');
+    } else {
+      this.setState({
+        passengers: checkedValues,
+      });
+    }
     fetchSearchResults(filter);
-    this.setState({
-      passengers: checkedValues,
-    });
   };
 
   modelOnChange = (checkedValues) => {
@@ -125,11 +144,17 @@ class DealsPage extends Component {
       insurance: checkedValues.join(','),
       bestFuel: bestFuel.join(','),
     };
-    this.props.fetchSearchResults(filter);
 
-    this.setState({
-      insurance: checkedValues,
-    });
+    if (checkedValues.length === 0) {
+      this.openNotification('Oooops!', 'Please select your prefeered insurance option');
+    } else {
+      this.props.fetchSearchResults(filter);
+
+      this.setState({
+        insurance: checkedValues,
+      });
+    }
+
   };
 
   bestFueleOnChange = (checkedValues) => {
@@ -143,11 +168,16 @@ class DealsPage extends Component {
       insurance: insurance.join(','),
       bestFuel: checkedValues.join(','),
     };
-    this.props.fetchSearchResults(filter);
 
-    this.setState({
-      bestFuel: checkedValues,
-    });
+    if (checkedValues.length === 0) {
+      this.openNotification('Oooops!', 'Please select fuel option');
+    } else {
+      this.props.fetchSearchResults(filter);
+
+      this.setState({
+        bestFuel: checkedValues,
+      });
+    }
   };
 
   onCheckAllChange = (e) => {
@@ -164,7 +194,7 @@ class DealsPage extends Component {
       const filter = {
         passengers: passengers.join(','),
         model: model.join(','),
-        color: colorsOptions,
+        color: colorsOptions.join(','),
         insurance: insurance.join(','),
         bestFuel: bestFuel.join(','),
       };
@@ -185,7 +215,7 @@ class DealsPage extends Component {
       } = this.state;
       const filter = {
         passengers: passengers.join(','),
-        model: modelsOptions,
+        model: modelsOptions.join(', '),
         color: color.join(','),
         insurance: insurance.join(','),
         bestFuel: bestFuel.join(','),
@@ -194,8 +224,16 @@ class DealsPage extends Component {
     }
   };
 
+  openNotification = (message, description) => {
+    notification.error({
+      message,
+      description,
+      icon: <Icon type="frown" style={{ color: '#108ee9' }} />,
+    });
+  };
+
   render() {
-    const { searchResults, location } = this.props;
+    const { searchResults, location, apiCallState } = this.props;
     const { values } = location.state;
 
     return (
@@ -308,6 +346,16 @@ class DealsPage extends Component {
             </SubMenu>
           </Menu>
         </div>
+
+        {
+          apiCallState.success && searchResults.cars.length === 0 ?
+          <div className="nullResults">
+            <Card style={{background: 'orange'}}>
+            <h2>No cars found!!!</h2>
+            </Card>
+          </div>
+         
+        :
         <div className="search-results">
           <div className="recommended-results-container">
             <p className="best-deal">
@@ -326,6 +374,7 @@ class DealsPage extends Component {
             <div className="car-cards">{this.renderResults(searchResults.cars).slice(2)}</div>
           </div>
         </div>
+      }
       </div>
     );
   }
