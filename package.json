@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "frontend-test": "cd frontend && yarn test",
+    "backend-test": "cd backend && yarn test",
+    "test": "npm-run-all backend-test && yarn frontend-test",
+    "coverage-frontend": "cd frontend && yarn test -- --coverage",
+    "coverage-backend": "cd backend && nyc --reporter=lcov yarn test",
+    "coverage": "npm-run-all coverage-backend coverage-frontend"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.3"
+  }
+}
