@@ -32,27 +32,4 @@ describe('<HomePage/>', () => {
     const tree = renderer.create(wrapper).toJSON();
     expect(tree).toMatchSnapshot();
   });
-
-  // describe('onClick()', () => {
-  //   it('successfully calls the onClick handler', () => {
-  //     const mockOnClick = jest.fn();
-  //     const component = mount(<HomePage onSubmit={mockOnClick} {...props} />);
-  //     // component = component.dive();
-  //     component.find('Form').simulate('click');
-  //     console.log(component.debug());
-
-  //     expect(mockOnClick.mock.calls.length).toEqual(1);
-  //   });
-  // });
-
-  // it('dispatches event to show the avatar selection list', () => {
-  //   const component = wrapper.dive();
-
-  //   component
-  //     .find(HomePage)
-  //     .props()
-  //     .onSubmit();
-
-  //   expect(store.getActions()).toMatchSnapshot();
-  // });
 });

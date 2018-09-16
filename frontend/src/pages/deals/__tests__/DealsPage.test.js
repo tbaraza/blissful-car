@@ -27,12 +27,6 @@ const props = {
   },
 };
 
-// beforeEach(() => {
-//   // creates the store with any initial state or middleware needed
-//   const store = mockStore(props);
-//   wrapper = shallow(<DealsPageContainer store={store} />);
-// });
-
 describe('<DealsPage/>', () => {
   it('renders correctly', () => {
     // const component = wrapper.dive();
@@ -40,16 +34,4 @@ describe('<DealsPage/>', () => {
     const tree = renderer.create(wrapper).toJSON();
     expect(tree).toMatchSnapshot();
   });
-
-  // describe('onClick()', () => {
-  //   it('successfully calls the onClick handler', () => {
-  //     const mockOnClick = jest.fn();
-  //     const component = mount(<DealsPage onSubmit={mockOnClick} {...props} />);
-  //     // component = component.dive();
-  //     console.log(component.debug());
-  //     component.find('Form').simulate('click');
-
-  //     expect(mockOnClick.mock.calls.length).toEqual(1);
-  //   });
-  // });
 });
