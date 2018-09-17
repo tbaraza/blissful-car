@@ -2,7 +2,7 @@
 
 exports[`<HomePage/> renders correctly 1`] = `
 <div
-  className="App"
+  className="app"
 >
   <div
     className="ant-card ant-card-bordered"
@@ -827,7 +827,7 @@ exports[`<HomePage/> renders correctly 1`] = `
 
 exports[`<HomePageContainer renders HomePageContainer correctly 1`] = `
 <div
-  className="App"
+  className="app"
 >
   <div
     className="ant-card ant-card-bordered"

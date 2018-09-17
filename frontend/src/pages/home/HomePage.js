@@ -75,7 +75,7 @@ class HomePage extends Component {
     }
 
     return (
-      <div className="App">
+      <div className="app">
         <Card>
           <Form onSubmit={this.handleSubmit}>
             <FormItem label="Passengers" labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>

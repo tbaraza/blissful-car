@@ -62,7 +62,7 @@ cd frontend
 yarn install
 ```
 
-### Start development server
+### Start client development server
 
 ```bash
 yarn start
@@ -79,3 +79,7 @@ yarn test
 ```bash
 yarn coverage
 ```
+
+## Analytics
+
+Go to `http:localhost:3000/dashboard` to view statistics
