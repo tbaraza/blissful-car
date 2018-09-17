@@ -240,7 +240,6 @@ class DealsPage extends Component {
       <div className="search-results-container">
         <div>
           <Menu
-            onClick={this.handleClick}
             style={{ width: 256, height: '100%' }}
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
