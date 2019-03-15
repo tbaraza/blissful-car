@@ -5,9 +5,12 @@
     "test": "npm-run-all backend-test && yarn frontend-test",
     "coverage-frontend": "cd frontend && yarn test -- --coverage",
     "coverage-backend": "cd backend && nyc --reporter=lcov yarn test",
-    "coverage": "npm-run-all coverage-backend coverage-frontend"
+    "coverage": "npm-run-all coverage-backend coverage-frontend",
+    "test-ui": "codeceptjs run --steps"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.3"
+    "codeceptjs": "^2.0.7",
+    "npm-run-all": "^4.1.3",
+    "puppeteer": "^1.13.0"
   }
 }
