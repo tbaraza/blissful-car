@@ -22,7 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "coverage": "yarn test -- --coverage > coverage.lcov && node_modules/codecov/bin/codecov",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "stop": "npx kill-port 3000"
   },
   "devDependencies": {
     "codecov": "^3.1.0",

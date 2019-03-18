@@ -8,8 +8,8 @@ exports.config = {
   },
   include: {},
   mocha: {},
-  bootstrap: null,
-  teardown: null,
+  bootstrap: './server.js',
+  teardown: './server.js',
   hooks: [],
   gherkin: {
     features: './features/*.feature',
@@ -22,5 +22,4 @@ exports.config = {
   },
   tests: './frontend/tests/*_test.js',
   name: 'blissful-car',
-  // require: ["puppeteer"]
 }

@@ -6,7 +6,13 @@
     "coverage-frontend": "cd frontend && yarn test -- --coverage",
     "coverage-backend": "cd backend && nyc --reporter=lcov yarn test",
     "coverage": "npm-run-all coverage-backend coverage-frontend",
-    "test-ui": "codeceptjs run --steps"
+    "test-ui": "codeceptjs run --steps",
+    "start-frontend": "cd frontend && yarn start",
+    "start-backend": "cd backend && yarn start",
+    "stop-frontend": "cd frontend && yarn stop",
+    "stop-backend": "cd backend && yarn stop",
+    "start": "npm-run-all -p start-backend start-frontend",
+    "stop": "npm-run-all -p stop-backend stop-frontend"
   },
   "devDependencies": {
     "codeceptjs": "^2.0.7",
