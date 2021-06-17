@@ -10,7 +10,9 @@
     "express-sanitize-escape": "^1.1.0",
     "helmet": "^3.13.0",
     "nodemon": "^1.18.4",
-    "socket.io": "^2.1.1"
+    "morgan": "^1.9.0",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1"
   },
   "scripts": {
     "start": "node_modules/.bin/nodemon app.js",
@@ -27,8 +29,6 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "mocha": "^5.2.0",
-    "morgan": "^1.9.0",
-    "nyc": "^13.0.1",
-    "socket.io-client": "^2.1.1"
+    "nyc": "^13.0.1"
   }
 }
