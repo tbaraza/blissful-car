@@ -8,10 +8,10 @@
     "coverage": "npm-run-all coverage-backend coverage-frontend",
     "test-ui": "codeceptjs run --steps",
     "start-frontend": "npm-run-all -s cd frontend && yarn install && yarn start",
-    "start-backend": " npm-run-all -p cd backend && yarn install && yarn start",
+    "start-backend": " npm-run-all -s cd backend && yarn install && yarn start",
     "stop-frontend": "cd frontend && yarn stop",
     "stop-backend": "cd backend && yarn stop",
-    "start": "npm-run-all -p start-backend start-frontend",
+    "start": "sh deploy.sh",
     "stop": "npm-run-all -p stop-backend stop-frontend"
   },
   "dependencies": {
